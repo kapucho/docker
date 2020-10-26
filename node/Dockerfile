@@ -1,11 +1,5 @@
-FROM node:latest
+FROM node:10.13-alpine
 
-WORKDIR /home/app
-USER node
+WORKDIR /app
 
-ENV PORT 3000
-
-EXPOSE 3000
-
-ENTRYPOINT  /bin/bash
-
+CMD ["sh"]
