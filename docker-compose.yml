@@ -1,0 +1,26 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+  node: 
+    build: ./node
+    container_name: node-docker
+    ports:
+      - 8081:3000
+    volumes:
+      - ./node/:/home/app
+    command: node server.js
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+    volumes:
+      - ./postgres/database:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
